@@ -1,25 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int matrix[3][3] = {{1,2,3}, {4,5,6},{7,8,9}};
+char matrix[3][3] = {{'1','2','3'}, {'4','5','6'},{'7','8','9'}};
 int row;
 int column;
-char token;
+char token = 'x';
 bool tiee = false;
-string n1;
-string n2;
+string n1 = "";
+string n2 = "";
 
 void function1(){
-
-    
-
-    cout<<"Enter the name of first player: "<<endl;
-    getline(cin, n1);
-    cout<<"Enter the name of second player: "<<endl;
-    getline(cin, n2);
-
-    cout<<n1<<" is the player1 so he/she play first"<<endl;
-    cout<<n2<<" is the player1 so he/she play second"<<endl;
 
     cout<<"     |     |   "<<endl;
     cout<<"  "<<matrix[0][0]<<"  |  "<<matrix[0][1]<<"  |  "<<matrix[0][2]<<"  "<<endl;
@@ -37,12 +27,12 @@ void function2(){
     int digit;
     
     if(token == 'x'){
-        cout<<n1<<" please enter";
+        cout<<n1<<" please enter: ";
         cin>>digit;
     }
 
     if(token == '0'){
-        cout<<n2<<" please enter";
+        cout<<n2<<" please enter: ";
         cin>>digit;
     }
 
@@ -92,7 +82,7 @@ void function2(){
         column = 2;
         
     }
-    else{
+    else if(digit < 1 || digit > 9){
         cout<<"Invalid !!!"<<endl;
     }
 
@@ -150,4 +140,45 @@ bool function3(){
     tiee = true;
     return false;
 
+}
+
+int main(){
+
+    cout<<"Enter the name of first player: "<<endl;
+    getline(cin, n1);
+    cout<<"Enter the name of second player: "<<endl;
+    getline(cin, n2);
+
+    cout<<n1<<" is the player1 so he/she play first"<<endl;
+    cout<<n2<<" is the player1 so he/she play second"<<endl;
+
+    function1();
+
+    int i = 0;
+
+
+    while (!function3())
+    {
+        function2();
+        function3();
+        i++;
+        if (i == 9)
+        {
+            cout<<"It's a draw match !!!"<<endl;
+            break;
+        }
+        
+    }
+
+    if (token == 'x' && tiee == false)
+    {
+        cout<<n2<<" Wins !!"<<endl;
+    }
+    else if (token == '0' && tiee == false)
+    {
+        cout<<n1<<" Wins !!"<<endl;
+    }
+    
+    return 0;
+    
 }
