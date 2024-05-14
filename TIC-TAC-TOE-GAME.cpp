@@ -5,6 +5,7 @@ int matrix[3][3] = {{1,2,3}, {4,5,6},{7,8,9}};
 int row;
 int column;
 char token;
+bool tiee = false;
 string n1;
 string n2;
 
@@ -118,5 +119,35 @@ void function2(){
 
 bool function3(){
 
+    for (int i = 0; i < 3; i++)
+    {
+        if (matrix[i][0] == matrix[i][1] && matrix[i][0] == matrix[i][2] || matrix[0][i] == matrix[1][i] && matrix[0][i] == matrix[2][i])
+        {
+            return true;
+        }
+        
+    }
+
+    if (matrix[0][0] == matrix[1][1] && matrix[1][1] == matrix[2][2] || matrix[0][2] == matrix[1][1] && matrix[1][1] == matrix[2][0])
+    {
+        return true;
+    }
     
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (matrix[i][j] != 'x' && matrix[i][j] != '0')
+            {
+                return false;
+            }
+            
+        }
+        
+    }
+    
+    tiee = true;
+    return false;
+
 }
